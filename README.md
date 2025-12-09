@@ -877,9 +877,9 @@ Run this as a job array
 #!/bin/bash
 #SBATCH --job-name=enrich_array
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=8G
-#SBATCH --time=02:00:00
-#SBATCH --array=1-20%5
+#SBATCH --mem=16G
+#SBATCH --time=06:00:00
+#SBATCH --array=1-20
 #SBATCH --output=logs/enrich_%A_%a.out
 #SBATCH --error=logs/enrich_%A_%a.err
 #SBATCH --account=def-ben
