@@ -950,34 +950,15 @@ python min_clusters_and_enrichment.py \
   --tissue-weighting weighted \
   --pseudocount 0.01
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 merge
 ```
-python split_tsv_robust.py merge \
-  --pattern "$SCRATCH/enrich_parts/adjusted_*_filtered_clusters.tsv" \
-  --output $SCRATCH/merged_filtered_clusters.tsv
+python split_tsv_robust.py merge   --pattern "enrich_parts/adjusted_*_filtered_clusters.tsv"   --output enrich_parts/merged_filtered_clusters.tsv
 ```
 global enrichment recompute on the merged filtered clusters (to avoid any chunk-wise denominator bias):
 ```
-
 python min_clusters_and_enrichment.py \
-  --clusters $SCRATCH/merged_filtered_clusters.tsv \
-  --out-prefix $SCRATCH/global_adjusted \
+  --clusters enrich_parts/merged_filtered_clusters.tsv \
+  --out-prefix enrich_parts/global_adjusted \
   --B 100 --cv 0.20 --reldelta 0.10 --rho 0.90 --min-k 2 \
   --tissue-weighting weighted --pseudocount 0.01
 ```
